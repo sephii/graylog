@@ -8,6 +8,6 @@ test ! -e sites/all/modules/gelf && git submodule add --branch 7.x-1.x http://gi
 drush pm-list --pipe --status='enabled'|grep -qx gelf || drush pm-enable -y gelf
 
 if [ -f modules.enabled ]; then
-    cat modules.enabled|grep -qx gelf || echo gelf >> modules.enabled
-    cat modules.enabled|grep -qx libraries || echo libraries >> modules.enabled
+    grep -qx gelf modules.enabled || echo gelf >> modules.enabled
+    grep -qx libraries modules.enabled || echo libraries >> modules.enabled
 fi
